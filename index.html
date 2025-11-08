@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>International Service - Trumpets & Feasts 2025</title>
+<title>Trombetas e Festas 2025</title>
 
 <!-- Biblioteca para gerar imagem -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -54,11 +54,10 @@ button:hover {
   background-color: #ffe9a8;
 }
 
-/* ---- CONVITE ---- */
 .invitation {
   display: none;
   margin-top: 30px;
-  background: rgba(28, 37, 65, 0.95);
+  background: #1c2541;
   padding: 25px;
   border-radius: 10px;
   border: 2px solid #f5d97a;
@@ -67,30 +66,13 @@ button:hover {
   overflow: hidden;
 }
 
-.invitation::before {
-  content: "";
-  background: url('tef5.png') center/cover no-repeat;
-  opacity: 0.15; /* transparência do fundo */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
-
-.invitation * {
-  position: relative;
-  z-index: 1;
-}
-
 .invitation h2 {
   color: #f5d97a;
 }
 
-.download-btn, .share-btn {
+.download-btn {
   display: none;
-  margin: 10px;
+  margin-top: 20px;
   background-color: #f5d97a;
   color: #0b132b;
   border: none;
@@ -100,41 +82,52 @@ button:hover {
   font-weight: bold;
 }
 
-.download-btn:hover, .share-btn:hover {
-  background-color: #ffe9a8;
+.invitation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('Untitled design.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15; /* transparência */
+  z-index: 0;
+}
+
+.invitation * {
+  position: relative;
+  z-index: 1;
 }
 </style>
 </head>
 
 <body>
-<!-- Imagem do topo -->
-<img src="tef5.png" alt="Banner Trombetas e Festas" style="width:100%; height:auto; display:block; margin:auto;">
-
+<img src="Untitled design.png" alt="Banner Trombetas e Festas" style="width:100%; height:auto; display:block; margin:auto;">
 <div class="card">
-  <h1>International Service - Trumpets & Feasts 2025</h1>
-  <p>Fill in the fields below to create your invitation:</p>
+  <h1>Trombetas e Festas 2025</h1>
+  <p>Preencha os campos abaixo para gerar seu convite:</p>
 
-  <input type="text" id="guestName" placeholder="Guest name (e.g., John and family)" />
+  <input type="text" id="guestName" placeholder="Nome do convidado (ex: João e família)" />
   <br />
-  <input type="text" id="churchAddress" placeholder="Church address (e.g., 123 Main St, Boston, MA)" />
+  <input type="text" id="churchAddress" placeholder="Endereço da igreja (ex: Rua Central, 123 - São Paulo)" />
   <br />
-  <button onclick="generateInvitation()">Generate Invitation</button>
+  <button onclick="generateInvitation()">Gerar Convite</button>
 </div>
 
-<!-- Convite final -->
 <div class="invitation" id="invitationCard">
   <h2 id="inviteeName"></h2>
-  <p>You and your family are our honored guests for the:</p>
-  <h3>International Service - Trumpets & Feasts 2025</h3>
-  <p>This will be a message of alert to the world about the current events that precede the return of Jesus.</p>
-  <p><strong>Date:</strong> November 30, 2025</p>
-  <p><strong>Time:</strong> 10:00 AM</p>
-  <p>We invite you to join us at:</p>
+  <p>Você e sua família são nossos convidados de honra para o:</p>
+  <h3>Trombetas e Festas 2025</h3>
+  <p>Será um evento de alerta para o mundo sobre os acontecimentos atuais que antecedem a volta de Jesus.</p>
+  <p><strong>Data:</strong> 30 de Novembro de 2025</p>
+  <p><strong>Horário:</strong> 10:00 da manhã</p>
+  <p>Convidamos vocês para assistirem ao evento conosco na:</p>
   <p id="churchLocation"></p>
 </div>
 
-<button class="download-btn" id="downloadBtn" onclick="downloadInvitation()">Download Invitation</button>
-<button class="share-btn" id="shareBtn" onclick="shareInvitation()">Share Invitation</button>
+<button class="download-btn" id="downloadBtn" onclick="downloadInvitation()">Baixar Convite</button>
 
 <script>
 function generateInvitation() {
@@ -144,10 +137,9 @@ function generateInvitation() {
   const churchLocation = document.getElementById("churchLocation");
   const invitation = document.getElementById("invitationCard");
   const downloadBtn = document.getElementById("downloadBtn");
-  const shareBtn = document.getElementById("shareBtn");
 
   if (!name || !address) {
-    alert("Please fill in both fields before generating the invitation.");
+    alert("Por favor, preencha os dois campos antes de gerar o convite.");
     return;
   }
 
@@ -155,7 +147,6 @@ function generateInvitation() {
   churchLocation.innerText = address;
   invitation.style.display = "block";
   downloadBtn.style.display = "inline-block";
-  shareBtn.style.display = "inline-block";
   window.scrollTo({ top: invitation.offsetTop, behavior: "smooth" });
 }
 
@@ -163,33 +154,11 @@ function downloadInvitation() {
   const invitation = document.getElementById("invitationCard");
   html2canvas(invitation, { scale: 2 }).then((canvas) => {
     const link = document.createElement("a");
-    link.download = "invitation.png";
+    link.download = "convite.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
   });
 }
-
-function shareInvitation() {
-  const name = document.getElementById("guestName").value.trim();
-  const address = document.getElementById("churchAddress").value.trim();
-
-  const shareText = `🌟 You and your family are invited to the "International Service - Trumpets & Feasts 2025"! 🌟
-
-📅 Date: November 30, 2025
-🕙 Time: 10:00 AM
-📍 Location: ${address}
-
-We look forward to seeing you, ${name}!`;
-
-  if (navigator.share) {
-    navigator.share({
-      title: "Trumpets & Feasts 2025 Invitation",
-      text: shareText,
-      url: window.location.href
-    }).catch((error) => console.log("Share failed:", error));
-  } else {
-    alert("Sharing is not supported on this device. You can copy and share the link manually.");
-  }
-}
 </script>
 </body>
+</html>
